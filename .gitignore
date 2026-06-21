@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+instance/sentiment.db
+static/uploads/*
+.env
+model_indobert_sentiment/model.safetensors
+model_indobert_sentiment/*.bin

@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.git/
+.vscode/
+.env
+instance/*
+static/uploads/*
+test.ipynb
+model_indobert_sentiment/model.safetensors
+model_indobert_sentiment/*.bin
