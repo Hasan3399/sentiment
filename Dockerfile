@@ -17,4 +17,4 @@ RUN mkdir -p instance static/uploads/csv static/uploads/exports static/uploads/w
 
 EXPOSE 8080
 
-CMD ["sh", "-c", "gunicorn -b 0.0.0.0:${PORT:-8080} app:app --workers 1 --timeout 120"]
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app", "--workers", "1", "--timeout", "120"]
