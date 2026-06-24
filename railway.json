@@ -4,7 +4,6 @@
     "builder": "DOCKERFILE"
   },
   "deploy": {
-    "startCommand": "gunicorn -b 0.0.0.0:${PORT:-8080} app:app --workers 1 --timeout 120",
     "restartPolicyType": "ON_FAILURE"
   }
 }
