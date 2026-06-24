@@ -45,10 +45,11 @@ for directory in [INSTANCE_DIR, UPLOAD_DIR, CSV_DIR, EXPORT_DIR, WORDCLOUD_DIR]:
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "sentiment-dashboard-local-secret")
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv(
-    "DATABASE_URL",
-    f"sqlite:///{INSTANCE_DIR / 'sentiment.db'}",
-)
+database_url = os.getenv("DATABASE_URL", f"sqlite:///{INSTANCE_DIR / 'sentiment.db'}")
+if database_url.startswith("postgres://"):
+    database_url = database_url.replace("postgres://", "postgresql://", 1)
+app.config["SQLALCHEMY_DATABASE_URI"] = database_url
+
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["MAX_CONTENT_LENGTH"] = 64 * 1024 * 1024
 app.config["UPLOAD_FOLDER"] = str(CSV_DIR)
